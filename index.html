@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day Pari!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffeef2;
+            font-family: 'Montserrat', sans-serif;
+            color: #d63384;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* --- Falling Hearts CSS --- */
+        .heart-particle {
+            position: fixed;
+            top: -10px;
+            color: #ff4d6d;
+            font-size: 20px;
+            user-select: none;
+            z-index: 1000;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* --- Existing Layout Styles --- */
+        .header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4));
+        }
+
+        h1 { font-family: 'Dancing Script', cursive; font-size: 4rem; margin-bottom: 10px; }
+        p { font-size: 1.2rem; }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 50px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .photo-frame {
+            background: white;
+            padding: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            transform: rotate(-2deg);
+            transition: 0.3s;
+        }
+
+        .photo-frame:nth-child(even) { transform: rotate(3deg); }
+        .photo-frame:hover { transform: scale(1.05) rotate(0deg); }
+
+        .photo-frame img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .note-container {
+            background: #fff0f5;
+            padding: 60px 20px;
+            margin: 50px 0;
+        }
+
+        .note-content {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.4rem;
+            line-height: 1.8;
+            font-style: italic;
+            border-left: 5px solid #d63384;
+            padding-left: 30px;
+            text-align: left;
+        }
+
+        .proposal {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn-yes {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+            transition: 0.3s;
+        }
+
+        .btn-yes:hover { background-color: #c9184a; transform: scale(1.1); }
+    </style>
+</head>
+<body>
+
+    <section class="header">
+        <h1>Hey Pari! ❤️</h1>
+        <p>Scroll down to see our journey...</p>
+        
+        <div style="margin-top: 20px;">
+            <audio controls autoplay loop>
+                <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <div class="photo-frame"><img src="https://i.ibb.co/Q7mmky0P/Whats-App-Image-2026-02-14-at-1-18-12-PM.jpg" alt="Memory 1"><p>Moment #1</p></div>
+        <div class="photo-frame"><img src="https://i.ibb.co/KcxWHKk6/Whats-App-Image-2026-02-14-at-1-18-13-PM.jpg" alt="Memory 2"><p>Moment #2</p></div>
+        <div class="photo-frame"><img src="https://i.ibb.co/twJKFmxH/Whats-App-Image-2026-02-14-at-1-18-15-PM.jpg" alt="Memory 3"><p>Moment #3</p></div>
+        <div class="photo-frame"><img src="https://i.ibb.co/VYYCXHLD/Whats-App-Image-2026-02-14-at-1-18-16-PM.jpg" alt="Memory 4"><p>Moment #4</p></div>
+        <div class="photo-frame"><img src="https://i.ibb.co/VYYCXHLD/Whats-App-Image-2026-02-14-at-1-18-16-PM.jpg" alt="Memory 5"><p>Moment #5</p></div>
+        <div class="photo-frame"><img src="https://i.ibb.co/9xP14n1/Whats-App-Image-2026-02-14-at-1-18-11-PM.jpg" alt="Memory 6"><p>Moment #6</p></div>
+    </section>
+
+    <section class="note-container">
+        <div class="note-content">
+            To my dearest Pari,<br><br>
+            Every single day with you feels like a blessing. You’ve brought so much color into my life, and I wanted to make this just to remind you how special you are to me.<br><br>
+            Thank you for being my peace and my joy. I look forward to making a thousand more memories with you.<br><br>
+            Happy Valentine’s Day, my Cutiepie ❤️
+        </div>
+    </section>
+
+    <section class="proposal">
+        <h2>Pari...</h2>
+        <button class="btn-yes" onclick="celebrate()">
+            Will you be my Valentine, Pari?
+        </button>
+    </section>
+
+    <script>
+        // Function to create falling hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-particle');
+            heart.innerHTML = '❤️';
+            
+            // Randomize position and timing
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's'; // Between 2-5s
+            heart.style.opacity = Math.random();
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            
+            document.body.appendChild(heart);
+            
+            // Remove heart after it falls to keep the page fast
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        // Create hearts every 300ms
+        setInterval(createHeart, 300);
+
+        // Simple pop-up when she says Yes
+        function celebrate() {
+            alert('Yay! I love you Pari! ❤️');
+            // You can even add more hearts here!
+            for(let i=0; i<50; i++) {
+                setTimeout(createHeart, i * 50);
+            }
+        }
+    </script>
+</body>
+</html>
